@@ -14,6 +14,8 @@ variables {
   iso_checksum_9_aarch64 = "file:https://repo.almalinux.org/almalinux/9.0-beta/isos/aarch64/CHECKSUM"
   iso_url_9_ppc64le      = "https://repo.almalinux.org/almalinux/9.0-beta/isos/ppc64le/AlmaLinux-9.0-beta-1-ppc64le-boot.iso"
   iso_checksum_9_ppc64le = "file:https://repo.almalinux.org/almalinux/9.0-beta/isos/ppc64le/CHECKSUM"
+  iso_url_9_s390x      = "https://repo.almalinux.org/almalinux/9.0-beta/isos/s390x/AlmaLinux-9.0-beta-1-s390x-boot.iso"
+  iso_checksum_9_s390x = "file:https://repo.almalinux.org/almalinux/9.0-beta/isos/s390x/CHECKSUM"
   headless               = true
   boot_wait              = "10s"
   cpus                   = 2
@@ -111,6 +113,14 @@ variables {
     "inst.text biosdevname=0 net.ifnames=0 ",
     "inst.ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/almalinux-9.gencloud-ppc64le.ks<enter>",
     "initrd /ppc/ppc64/initrd.img<enter>",
+    "boot<enter><wait>"
+  ]
+  gencloud_boot_command_9_s390x = [
+    "c<wait>",
+    "linux /ppc/ppc64/vmlinuz inst.stage2=hd:LABEL=AlmaLinux-9-0-beta-1-s390x-dvd ro ",
+    "inst.text biosdevname=0 net.ifnames=0 ",
+    "inst.ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/almalinux-9.gencloud-s390x.ks<enter>",
+    "initrd /s390x/s390x/initrd.img<enter>",
     "boot<enter><wait>"
   ]
 
