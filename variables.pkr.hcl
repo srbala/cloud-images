@@ -128,6 +128,7 @@ variables {
   gencloud_ssh_username      = "root"
   gencloud_ssh_password      = "almalinux"
   gencloud_boot_wait_ppc64le = "8s"
+  gencloud_boot_wait_s390x   = "8s"
   //
   // Hyper-V specific variables
   //
