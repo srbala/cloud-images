@@ -129,12 +129,42 @@ source "qemu" "almalinux-9-gencloud-ppc64le" {
 }
 
 
+source "qemu" "almalinux-9-gencloud-s390x" {
+  iso_url            = var.iso_url_9_s390x
+  iso_checksum       = var.iso_checksum_9_s390x
+  shutdown_command   = var.root_shutdown_command
+  http_directory     = var.http_directory
+  ssh_username       = var.gencloud_ssh_username
+  ssh_password       = var.gencloud_ssh_password
+  ssh_timeout        = var.ssh_timeout
+  cpus               = var.cpus
+  disk_interface     = "virtio-scsi"
+  disk_size          = var.gencloud_disk_size
+  disk_cache         = "unsafe"
+  disk_discard       = "unmap"
+  disk_detect_zeroes = "unmap"
+  disk_compression   = true
+  format             = "qcow2"
+  headless           = var.headless
+  memory             = var.memory
+  net_device         = "virtio-net"
+  qemu_binary        = var.qemu_binary
+  vm_name            = "AlmaLinux-9-GenericCloud-9.0-beta-1-${formatdate("YYYYMMDD", timestamp())}.s390x.qcow2"
+  boot_wait          = var.gencloud_boot_wait_s390x
+  boot_command       = var.gencloud_boot_command_9_s390x
+  qemuargs = [
+    ["-machine", "s390x,accel=kvm,kvm-type=HV"]
+  ]
+}
+
+
 build {
   sources = [
     "qemu.almalinux-9-gencloud-bios-x86_64",
     "qemu.almalinux-9-gencloud-x86_64",
     "qemu.almalinux-9-gencloud-aarch64",
-    "qemu.almalinux-9-gencloud-ppc64le"
+    "qemu.almalinux-9-gencloud-ppc64le",
+    "qemu.almalinux-9-gencloud-s390x"
   ]
 
   provisioner "ansible" {
