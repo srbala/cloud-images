@@ -117,10 +117,10 @@ variables {
   ]
   gencloud_boot_command_9_s390x = [
     "c<wait>",
-    "linux /ppc/ppc64/vmlinuz inst.stage2=hd:LABEL=AlmaLinux-9-0-beta-1-s390x-dvd ro ",
+    "linux /images/vmlinuz inst.stage2=hd:LABEL=AlmaLinux-9-0-beta-1-s390x-dvd ro ",
     "inst.text biosdevname=0 net.ifnames=0 ",
     "inst.ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/almalinux-9.gencloud-s390x.ks<enter>",
-    "initrd /s390x/s390x/initrd.img<enter>",
+    "initrd /images/initrd.img<enter>",
     "boot<enter><wait>"
   ]
 
