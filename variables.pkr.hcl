@@ -173,6 +173,15 @@ variables {
   vagrant_boot_command_9_aarch64 = [
     "e<down><down><end><bs><bs><bs><bs><bs>inst.text inst.ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/almalinux-9.vagrant-aarch64.ks<leftCtrlOn>x<leftCtrlOff>"
   ]
+  vagrant_boot_command_9_aarch64_uefi = [
+    "c",
+    "linux /images/pxeboot/vmlinuz inst.ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/almalinux-9.vagrant-aarch64-vmware.ks",
+    "<enter>",
+    "initrd /images/pxeboot/initrd.img",
+    "<enter>",
+    "boot",
+    "<enter><wait>"
+  ]
   vagrant_boot_command_9_x86_64_uefi = [
     "c<wait>",
     "linuxefi /images/pxeboot/vmlinuz inst.stage2=hd:LABEL=AlmaLinux-9-1-x86_64-dvd ro ",
